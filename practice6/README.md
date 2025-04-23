@@ -3,12 +3,12 @@
 This repository demonstrates containerizing a microservice-based application using Podman and Podman Compose. The project builds on the previous microservices architecture from practice 5, and adds containerization capabilities.
 
 ## Project Structure
-###practice5
+### practice5
 - `client_service.py` - Public-facing API gateway that orchestrates calls to other services
 - `business_service.py` - Handles data processing and business logic
 - `database_service.py` - Manages data storage and retrieval
 - `.env` - Environment variables for configuration
-###practice6
+### practice6
 - `scheduler_service.py` - New service that periodically calls the client service
 - `*.dockerfile` - Containerization instructions for each service
 - `podman-compose.yml` - Multi-container orchestration configuration
@@ -45,10 +45,10 @@ Here only two endpoints from previous homework are accessible since we did not c
    ```bash
    podman logs client-service
    ```
-  INFO:     Started server process [1]
-  INFO:     Waiting for application startup.
-  INFO:     Application startup complete.
-  INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+   ##### INFO:     Started server process [1]
+   ##### INFO:     Waiting for application startup.
+   ##### INFO:     Application startup complete.
+   ##### INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 6. Clean up:
    ```bash
@@ -74,11 +74,8 @@ For this task I created new FastAPI `scheduler_service.py`.
    ```bash
    podman-compose -f practice6\podman-compose.yml ps
    ```
-   CONTAINER ID  IMAGE                                         COMMAND               CREATED         STATUS             PORTS                   NAMES
-  ff63c6fac89d  localhost/practice6_database-service:latest   uvicorn database_...  59 seconds ago  Up About a minute  0.0.0.0:8002->8002/tcp  database-service
-  1692f9359aff  localhost/practice6_business-service:latest   uvicorn business_...  58 seconds ago  Up 59 seconds      0.0.0.0:8001->8001/tcp  business-service
-  7f7b0ea65812  localhost/practice6_client-service:latest     uvicorn client_se...  57 seconds ago  Up 58 seconds      0.0.0.0:8000->8000/tcp  client-service
-  569b493b2663  localhost/practice6_scheduler-service:latest  uvicorn scheduler...  56 seconds ago  Up 57 seconds      0.0.0.0:8003->8003/tcp  scheduler-service
+![image](https://github.com/user-attachments/assets/fda0616c-4ada-4913-9fd9-a07b6fc4b7b8)
+
 5. Test the communication between services:
    ```bash
    # Check scheduler service logs to see if it's calling the client service
